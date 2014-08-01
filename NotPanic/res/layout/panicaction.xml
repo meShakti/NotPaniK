@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/app_panic_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:text="@string/app_panic_info" 
+        android:textSize="20sp"
+        android:paddingTop="10sp"/>
+     <Button 
+  	    android:id="@+id/app_settings_deactivate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:textSize="20sp"
+       	android:text="@string/app_settings_deactivate"
+       	android:layout_marginTop="20sp"
+       	android:paddingTop="10sp"
+       	android:textColor="#ff000f"
+     />
+    
+
+</LinearLayout>

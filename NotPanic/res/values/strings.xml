@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">Not Panic</string>
+	<string name="app_info">Click and hold the power button whenever needed.This app will send location details to your desired contacts</string>
+	<string name="app_contacts">Contacts Added:</string>
+	<string name="app_contacts_added">Add Contacts:</string>
+	<string name="app_settings_save">Save Settings</string>
+	<string name="app_settings_activate">Send Emergency Message Now</string>
+	<string name="app_settings_deactivate">Deactivate</string>
+	<string name="app_panic_info">No need to Panic .Your Location updates has been sent  to your contacts for the next 10 minutes .</string>
+	
+	
+</resources>
+  

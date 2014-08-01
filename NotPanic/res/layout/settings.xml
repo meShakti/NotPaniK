@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/app_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#ff0000"
+        android:text="@string/app_info" 
+        android:textSize="20sp"
+        android:paddingTop="10sp"/>
+       
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10sp" >
+		<TextView
+        android:id="@+id/app_contacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:text="@string/app_contacts"
+       	android:textSize="20sp"
+       	android:textColor="#101010" />
+     <Spinner  
+        android:id="@+id/app_contact_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:textSize="20sp"
+       	 />
+
+	</LinearLayout>
+	
+	<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10sp" >
+		<TextView
+        android:id="@+id/app_contacts_added"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:text="@string/app_contacts_added"
+       	android:textSize="20sp"
+       	android:textColor="#101010" />
+     <Spinner
+        android:id="@+id/app_contact_list_added"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:textSize="20sp"
+       	 />
+
+	</LinearLayout>
+    
+    
+  	 <Button 
+  	    android:id="@+id/app_settings_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:textSize="20sp"
+       	android:text="@string/app_settings_save"
+       	android:paddingTop="10sp"
+       	android:layout_marginTop="20sp"
+       	android:textColor="#ff000f"
+     />
+  	 <Button 
+  	    android:id="@+id/app_settings_activate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:textSize="20sp"
+       	android:text="@string/app_settings_activate"
+       	android:layout_marginTop="20sp"
+       	android:paddingTop="10sp"
+       	android:textColor="#ff000f"
+     />
+  	 
+  	 
+</LinearLayout>
