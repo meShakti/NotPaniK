@@ -16,6 +16,7 @@ public class AlertReciever extends IntentService {
         
         // Do work here, based on the contents of dataString
 		//checking what work in my code
+		//Checking for other user to mingle up my code
         
     }
 
