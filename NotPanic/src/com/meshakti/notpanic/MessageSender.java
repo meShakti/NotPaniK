@@ -4,15 +4,8 @@ import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
 import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.telephony.SmsManager;
-import android.util.Log;
-import android.webkit.WebView.FindListener;
 import android.widget.TextView;
 
 
@@ -22,12 +15,11 @@ import android.widget.TextView;
 public class MessageSender extends AsyncTask<Activity, Void, String> {
 	private static final int NO_OF_MESSAGES=5;
 	Activity a;
-	DBHelper dbManager;
+	
 	TextView tv;
 	public MessageSender(Activity act,TextView tv){
 		a=act;
-		dbManager=new DBHelper(a);
-		this.tv=tv;
+	    this.tv=tv;
 	} 
 	@Override
 	protected void onPreExecute() {
@@ -65,7 +57,7 @@ public class MessageSender extends AsyncTask<Activity, Void, String> {
 					if(loc.get("lat")!=Location.INVALID_LOCATION){
 						message+=" Latitude:"+loc.get("lat")+" Longitude:"+loc.get("lon");
 					}
-					sendMessage(message);
+					Sender.sendMessage(message,a);
 				}
 				};
 				for(int i=0;i<NO_OF_MESSAGES;i++){
@@ -81,38 +73,7 @@ public class MessageSender extends AsyncTask<Activity, Void, String> {
 
 		
 	}
-	public void sendMessage(String message){
-		try{
-			Cursor c=dbManager.getData("Select id,telno from Contacts");
-			while(c.moveToNext()){
-				String phoneNo=c.getString(1);
-					
-					try {
-					SmsManager smsManager = SmsManager.getDefault();
-					smsManager.sendTextMessage(phoneNo, null, message, null, null);
-					
-					
-					/*Intent intentt = new Intent(Intent.ACTION_VIEW);         
-	                intentt.setData(Uri.parse("sms:"));
-	                intentt.setType("vnd.android-dir/mms-sms");
-	                intentt.putExtra("sms_body",message);
-	                intentt.putExtra("address",  phoneNo );
-	                a.startActivity(intentt);
-	                */
-					}catch(Exception e){
-						tv.setText(""+e);
-					}
-					
-					}
-		
-			
-		}catch(Exception e){
-			Log.d("Exception","Exception.."+e);
-			//tv.setText(e.getMessage());
-		}
-	}
-
-
+	
 
 	}
 	

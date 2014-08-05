@@ -38,29 +38,6 @@ public class PanicAction extends Activity {
 		});
 		
 	}
-	/*
-	public void sendMessage(String message){
-		try{
-			Cursor c=dbManager.getData("Select id,telno from Contacts");
-			while(c.moveToNext()){
-				String phoneNo=c.getString(1);
-					
-					SmsManager smsManager = SmsManager.getDefault();
-					smsManager.sendTextMessage(phoneNo, null, message, null, null);
-			/*		Intent intentt = new Intent(Intent.ACTION_VIEW);         
-	                intentt.setData(Uri.parse("sms:"));
-	                intentt.setType("vnd.android-dir/mms-sms");
-	                intentt.putExtra("sms_body",message);
-	                intentt.putExtra("address",  phoneNo );
-	                startActivity(intentt);
-	                
-				
-			}
-		}catch(Exception e){
-			Log.d("Exception","Exception.."+e);
-		}
-	}
-*/
 
 	}
 
