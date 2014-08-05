@@ -15,6 +15,7 @@ public class AlertReciever extends IntentService {
       //  String dataString = workIntent.getDataString();
         
         // Do work here, based on the contents of dataString
+		//checking what work in my code
         
     }
 
