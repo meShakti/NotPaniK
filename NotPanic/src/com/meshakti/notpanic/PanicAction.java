@@ -11,34 +11,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 public class PanicAction extends Activity {
 	Button deactivateButton;
 	DBHelper dbManager;
 	MessageSender panicActor;
 	TextView tv;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.panicaction);
-		tv=(TextView)findViewById(R.id.app_panic_info);
-		panicActor=new MessageSender(this,tv);
-		dbManager=new DBHelper(this);
-		deactivateButton=(Button)findViewById(R.id.app_settings_deactivate);
+		tv = (TextView) findViewById(R.id.app_panic_info);
+		panicActor = new MessageSender(this, tv);
+		dbManager = new DBHelper(this);
+		deactivateButton = (Button) findViewById(R.id.app_settings_deactivate);
 		panicActor.execute(this);
 		deactivateButton.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				panicActor.cancel(true);
 				finish();
-				
+
 			}
 		});
-		
-	}
 
 	}
 
-
+}
