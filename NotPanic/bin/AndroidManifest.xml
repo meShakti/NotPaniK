@@ -28,13 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.meshakti.notpanic.SettingsShow" >
-            <intent-filter>
-                <action android:name="com.meshakti.notpanic.SettingsShow" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name="com.meshakti.notpanic.SettingsShow" />
         <activity android:name="com.meshakti.notpanic.PanicAction" />
     </application>
 

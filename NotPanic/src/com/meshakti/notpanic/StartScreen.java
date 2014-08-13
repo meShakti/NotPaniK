@@ -22,8 +22,8 @@ public class StartScreen extends Activity {
 					e.printStackTrace();
 
 				} finally {
-					Intent settingIntent = new Intent(
-							"com.meshakti.notpanic.SettingsShow");
+					Intent settingIntent = new Intent(StartScreen.this,
+							SettingsShow.class);
 					startActivity(settingIntent);
 
 				}
