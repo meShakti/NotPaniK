@@ -1,78 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/app_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10sp"
-        android:text="@string/app_info"
-        android:textColor="#ff0000"
-        android:textSize="20sp" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrlView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10sp" >
+        android:orientation="vertical"
+        android:padding="20dp" >
+        
+               
+        <TextView
+            android:id="@+id/app_alert_message"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:text="@string/app_alert_message"
+            android:textColor="#101010"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/app_user_message"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:paddingTop="10dp"
+            android:hint="@string/app_message_hint"
+            android:inputType="textMultiLine|textCapSentences"
+            android:lines="5" 
+            
+             />
 
+       
         <TextView
             android:id="@+id/app_contacts"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
             android:text="@string/app_contacts"
             android:textColor="#101010"
             android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/app_contact_list"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10sp" >
 
         <TextView
             android:id="@+id/app_contacts_added"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
             android:text="@string/app_contacts_added"
             android:textColor="#101010"
             android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/app_contact_list_added"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:overScrollMode="always"
             android:textSize="20sp" />
+
+
+        <Button
+            android:id="@+id/app_settings_save"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/app_settings_save"
+            android:textColor="#ff000f"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/app_settings_activate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/app_settings_activate"
+            android:textColor="#ff000f"
+            android:textSize="20sp" />
+         
+        
     </LinearLayout>
 
-    <Button
-        android:id="@+id/app_settings_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:paddingTop="10sp"
-        android:text="@string/app_settings_save"
-        android:textColor="#ff000f"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/app_settings_activate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:paddingTop="10sp"
-        android:text="@string/app_settings_activate"
-        android:textColor="#ff000f"
-        android:textSize="20sp" />
-
-</LinearLayout>
+</ScrollView>

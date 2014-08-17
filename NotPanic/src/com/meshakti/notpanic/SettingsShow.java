@@ -11,10 +11,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class SettingsShow extends Activity {
 	List<String> addableContactsList, contactsList;
 	HashMap<String, String> contactsNumber;
 	DBHelper dbManager;
+	EditText messageBox;
 
 	public final static int MAX_CONTACTS = 6;
 
@@ -34,17 +37,21 @@ public class SettingsShow extends Activity {
 		setContentView(R.layout.settings);
 
 		// Initializing every object
-
+		dbManager = new DBHelper(getApplicationContext());
 		addableContacts = (Spinner) findViewById(R.id.app_contact_list_added);
 		contacts = (Spinner) findViewById(R.id.app_contact_list);
 		saveSettings = (Button) findViewById(R.id.app_settings_save);
 		activateButon = (Button) findViewById(R.id.app_settings_activate);
+		messageBox = (EditText) findViewById(R.id.app_user_message);
+		messageBox.setFocusable(false); // remove placing of cursor in
+										// messageBox
+		messageBox.setText(dbManager.getMessage());
 		contactsNumber = new HashMap<String, String>();
 		addableContactsList = new ArrayList<String>();
 		addableContactsList.add("Add Contacts");
 		contactsList = new ArrayList<String>();
 		contactsList.add("See Contacts");
-		dbManager = new DBHelper(getApplicationContext());
+
 		// setting up Initial Views (Experimental)
 
 		try {
@@ -152,8 +159,23 @@ public class SettingsShow extends Activity {
 								return;
 							}
 						}
+								
+					}
+					// code to save message
+					values = new ContentValues();
+					values.put("message", messageBox. getText().toString());
+					int ll=dbManager.setMessage(values);
+					if(ll>0){
 						Toast.makeText(getApplicationContext(),
 								"Settings Saved", Toast.LENGTH_SHORT).show();
+
+					}
+					else{
+						Toast.makeText(
+								getApplicationContext(),
+								"Insert Error Please Reset all settings",
+								Toast.LENGTH_SHORT).show();
+						return;
 					}
 				}
 
@@ -162,6 +184,7 @@ public class SettingsShow extends Activity {
 							"Empty List.Please insert some contacts",
 							Toast.LENGTH_SHORT).show();
 				}
+				
 			}
 
 		});
@@ -175,10 +198,20 @@ public class SettingsShow extends Activity {
 
 			}
 		});
+		messageBox.setOnTouchListener(new View.OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				// In touchmode,set focus back to messageBox
+				messageBox.setFocusableInTouchMode(true);
+				return false;
+			}
+		});
+
 	}
 
 	private void getContactList() {
-		// Experimental work
+
 		ContentResolver resolver = getContentResolver();
 		Uri contacts = android.provider.ContactsContract.Contacts.CONTENT_URI;
 		Cursor c = resolver.query(contacts, null,
