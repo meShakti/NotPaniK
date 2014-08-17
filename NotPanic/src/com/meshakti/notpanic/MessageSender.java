@@ -3,18 +3,25 @@ package com.meshakti.notpanic;
 import java.io.IOException;
 import java.util.HashMap;
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.AsyncTask;
-import android.widget.TextView;
+import android.util.Log;
 
+//Does three task
+//1.Creates the Location Message
+//2.Gets the latitude and longitude
+//3.Sends this message to contacts
 public class MessageSender extends AsyncTask<Activity, Void, String> {
 
 	Activity a;
+	DBHelper dbManager;
 
-	TextView tv;
+	private String locUri = "https://www.google.com/maps/place/";
 
-	public MessageSender(Activity act, TextView tv) {
+	public MessageSender(Activity act) {
 		a = act;
-		this.tv = tv;
+		dbManager = new DBHelper(a);
+
 	}
 
 	@Override
@@ -27,25 +34,31 @@ public class MessageSender extends AsyncTask<Activity, Void, String> {
 	@Override
 	protected String doInBackground(Activity... activity) {
 
-		String message = "I am in danger ! Follow my location at :";
+		String message = dbManager.getMessage();
 		Activity act = activity[0];
 
 		HashMap<String, Double> loc = Location.getCurrentLocation(act);
 
+		double lat = loc.get("lat").doubleValue();
+		double lon = loc.get("lon").doubleValue();
+		message+="\nLocation Details:";
+		message+="\nNearby Known Landmark:";
 		try {
 
-			double lat = loc.get("lat").doubleValue();
-			double lon = loc.get("lon").doubleValue();
-			message += Location.getAddress(lat, lon, act);
+			
+			message+=Location.getAddress(lat, lon, act);
 
 		} catch (IOException e) {
 
-			message += "(Location can't resolved to an address .Use the Latitude and longitude to track location using internet)";
+			message += "Not Found";
 		}
+		message+="\nFind Current Location at : ";
 
 		if (loc.get("lat") != Location.INVALID_LOCATION) {
-			message += " Latitude:" + loc.get("lat") + " Longitude:"
-					+ loc.get("lon");
+			message +=locUri+""+lat+"+"+lon;
+		}
+		else{
+			message +="Not Found"; 
 		}
 
 		return message;
@@ -54,7 +67,18 @@ public class MessageSender extends AsyncTask<Activity, Void, String> {
 	@Override
 	protected void onPostExecute(String message) {
 		super.onPostExecute(message);
-		Sender.sendMessage(message, a);
+
+		try {
+			Cursor c = dbManager.getData("Select id,telno from Contacts");
+			while (c.moveToNext()) {
+				String phoneNo = c.getString(1);
+				Sender.sendMessage(message, phoneNo, a);
+			}
+		} catch (Exception e) {
+			Log.d("Exception", "Exception.." + e);
+
+		}
+		a.finish();
 
 	}
 

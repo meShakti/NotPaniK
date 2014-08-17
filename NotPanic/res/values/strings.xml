@@ -5,9 +5,10 @@
     <string name="app_contacts">Added Contacts</string>
     <string name="app_contacts_added">Avaiable Contacts</string>
     <string name="app_settings_save">Save Settings</string>
-    <string name="app_settings_activate">Send Emergency Message Now</string>
-    <string name="app_settings_deactivate">Deactivate</string>
-    <string name="app_panic_info">No need to Panic .Your Location updates has been sent  to your contacts for the next 10 minutes .</string>
+    <string name="app_settings_activate">Send Location Updates</string>
+    <string name="app_settings_deactivate">Cancel</string>
+    <string name="app_panic_info">Application is sending location information to your contacts..</string>
     <string name="app_message_hint">Set the alert message ,Eg. I am in danger!</string>
 	<string name="app_alert_message">Alert Message</string>
+	<string name="app_close">Close</string>
 </resources>

@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 public class SettingsShow extends Activity {
 	Spinner addableContacts, contacts;
-	Button saveSettings, activateButon;
+	Button saveSettings, activateButon,closeButon;
 	List<String> addableContactsList, contactsList;
 	HashMap<String, String> contactsNumber;
 	DBHelper dbManager;
@@ -42,6 +42,7 @@ public class SettingsShow extends Activity {
 		contacts = (Spinner) findViewById(R.id.app_contact_list);
 		saveSettings = (Button) findViewById(R.id.app_settings_save);
 		activateButon = (Button) findViewById(R.id.app_settings_activate);
+		closeButon=(Button) findViewById(R.id.app_settings_close);
 		messageBox = (EditText) findViewById(R.id.app_user_message);
 		messageBox.setFocusable(false); // remove placing of cursor in
 										// messageBox
@@ -195,6 +196,15 @@ public class SettingsShow extends Activity {
 			public void onClick(View v) {
 
 				startActivity(new Intent(SettingsShow.this, PanicAction.class));
+
+			}
+		});
+		closeButon.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				finish();
 
 			}
 		});
