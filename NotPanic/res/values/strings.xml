@@ -9,6 +9,8 @@
     <string name="app_settings_deactivate">Cancel</string>
     <string name="app_panic_info">Application is sending location information to your contacts..</string>
     <string name="app_message_hint">Set the alert message ,Eg. I am in danger!</string>
-	<string name="app_alert_message">Alert Message</string>
-	<string name="app_close">Close</string>
+    <string name="app_alert_message">Alert Message</string>
+    <string name="app_close">Close</string>
+    <string name="service_label">NotPanic Service</string>
+
 </resources>

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.location.Address;

@@ -30,6 +30,18 @@
         </activity>
         <activity android:name="com.meshakti.notpanic.SettingsShow" />
         <activity android:name="com.meshakti.notpanic.PanicAction" />
+
+        <service
+            android:name="com.meshakti.notpanic.AlertConfirm"
+            android:enabled="true"
+            android:label="@string/service_label" />
+
+        <receiver android:name="com.meshakti.notpanic.AlertReciever" >
+            <intent-filter>
+                <action android:name="android.media.RINGER_MODE_CHANGED" />
+                <action android:name="com.meShakti.notpanic.action.triggered" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

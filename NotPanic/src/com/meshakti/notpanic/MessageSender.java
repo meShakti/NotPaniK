@@ -41,24 +41,22 @@ public class MessageSender extends AsyncTask<Activity, Void, String> {
 
 		double lat = loc.get("lat").doubleValue();
 		double lon = loc.get("lon").doubleValue();
-		message+="\nLocation Details:";
-		message+="\nNearby Known Landmark:";
+		message += "\nLocation Details:";
+		message += "\nNearby Known Landmark:";
 		try {
 
-			
-			message+=Location.getAddress(lat, lon, act);
+			message += Location.getAddress(lat, lon, act);
 
 		} catch (IOException e) {
 
 			message += "Not Found";
 		}
-		message+="\nFind Current Location at : ";
+		message += "\nFind Current Location at : ";
 
 		if (loc.get("lat") != Location.INVALID_LOCATION) {
-			message +=locUri+""+lat+"+"+lon;
-		}
-		else{
-			message +="Not Found"; 
+			message += locUri + "" + lat + "+" + lon;
+		} else {
+			message += "Not Found";
 		}
 
 		return message;

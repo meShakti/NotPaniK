@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 public class SettingsShow extends Activity {
 	Spinner addableContacts, contacts;
-	Button saveSettings, activateButon,closeButon;
+	Button saveSettings, activateButon, closeButon;
 	List<String> addableContactsList, contactsList;
 	HashMap<String, String> contactsNumber;
 	DBHelper dbManager;
@@ -42,7 +42,7 @@ public class SettingsShow extends Activity {
 		contacts = (Spinner) findViewById(R.id.app_contact_list);
 		saveSettings = (Button) findViewById(R.id.app_settings_save);
 		activateButon = (Button) findViewById(R.id.app_settings_activate);
-		closeButon=(Button) findViewById(R.id.app_settings_close);
+		closeButon = (Button) findViewById(R.id.app_settings_close);
 		messageBox = (EditText) findViewById(R.id.app_user_message);
 		messageBox.setFocusable(false); // remove placing of cursor in
 										// messageBox
@@ -160,20 +160,18 @@ public class SettingsShow extends Activity {
 								return;
 							}
 						}
-								
+
 					}
 					// code to save message
 					values = new ContentValues();
-					values.put("message", messageBox. getText().toString());
-					int ll=dbManager.setMessage(values);
-					if(ll>0){
+					values.put("message", messageBox.getText().toString());
+					int ll = dbManager.setMessage(values);
+					if (ll > 0) {
 						Toast.makeText(getApplicationContext(),
 								"Settings Saved", Toast.LENGTH_SHORT).show();
 
-					}
-					else{
-						Toast.makeText(
-								getApplicationContext(),
+					} else {
+						Toast.makeText(getApplicationContext(),
 								"Insert Error Please Reset all settings",
 								Toast.LENGTH_SHORT).show();
 						return;
@@ -185,7 +183,7 @@ public class SettingsShow extends Activity {
 							"Empty List.Please insert some contacts",
 							Toast.LENGTH_SHORT).show();
 				}
-				
+
 			}
 
 		});
@@ -212,7 +210,7 @@ public class SettingsShow extends Activity {
 
 			@Override
 			public boolean onTouch(View arg0, MotionEvent arg1) {
-				// In touchmode,set focus back to messageBox
+				// In Touch mode,set focus back to messageBox
 				messageBox.setFocusableInTouchMode(true);
 				return false;
 			}
