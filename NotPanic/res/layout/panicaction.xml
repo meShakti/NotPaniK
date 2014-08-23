@@ -6,21 +6,22 @@
 
     <TextView
         android:id="@+id/app_panic_info"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10sp"
+        android:alpha="0.75"
         android:text="@string/app_panic_info"
-        android:textColor="#ff0000"
+        android:textColor="#800080"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/app_settings_deactivate"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:paddingTop="10sp"
+        android:layout_marginTop="10dp"
+        android:alpha="0.75"
+        android:background="#800080"
         android:text="@string/app_settings_deactivate"
-        android:textColor="#ff000f"
+        android:textColor="#ffffff"
         android:textSize="20sp" />
 
 </LinearLayout>

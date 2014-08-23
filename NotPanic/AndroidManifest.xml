@@ -20,15 +20,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.meshakti.notpanic.StartScreen"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:name="com.meshakti.notpanic.SettingsShow"
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.meshakti.notpanic.SettingsShow" />
+        
         <activity android:name="com.meshakti.notpanic.PanicAction" />
 
         <service

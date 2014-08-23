@@ -53,7 +53,7 @@ public class SettingsShow extends Activity {
 		contactsList = new ArrayList<String>();
 		contactsList.add("See Contacts");
 
-		// setting up Initial Views (Experimental)
+		// setting up Initial Views
 
 		try {
 			Cursor c = dbManager.getData("Select id,name from Contacts");
@@ -62,7 +62,7 @@ public class SettingsShow extends Activity {
 				contactsList.add(c.getString(1));
 			}
 		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "Applicaton Started",
+			Toast.makeText(getApplicationContext(), "Application Started",
 					Toast.LENGTH_SHORT).show();
 		}
 		ArrayAdapter<String> cAdapter = new ArrayAdapter<String>(
@@ -104,6 +104,11 @@ public class SettingsShow extends Activity {
 						contacts.setAdapter(cAdapter);
 						Toast.makeText(getApplicationContext(),
 								"Contact Added", Toast.LENGTH_SHORT).show();
+						// resets the addable contacts to its initial position
+						ArrayAdapter<String> addAdapter = new ArrayAdapter<String>(
+								getApplicationContext(), R.layout.spintext,
+								addableContactsList);
+						addableContacts.setAdapter(addAdapter);
 					}
 
 					@Override
@@ -164,18 +169,30 @@ public class SettingsShow extends Activity {
 					}
 					// code to save message
 					values = new ContentValues();
-					values.put("message", messageBox.getText().toString());
-					int ll = dbManager.setMessage(values);
-					if (ll > 0) {
-						Toast.makeText(getApplicationContext(),
-								"Settings Saved", Toast.LENGTH_SHORT).show();
+					String alertMessage = messageBox.getText().toString();
+					if (alertMessage != null && !alertMessage.equals("")) {
+						values.put("message", alertMessage);
+						int ll = dbManager.setMessage(values);
+						if (ll > 0) {
+							Toast.makeText(getApplicationContext(),
+									"Settings Saved", Toast.LENGTH_SHORT)
+									.show();
 
-					} else {
+						} else {
+							Toast.makeText(getApplicationContext(),
+									"Insert Error Please Reset all settings",
+									Toast.LENGTH_SHORT).show();
+							return;
+						}
+					}
+					else{
 						Toast.makeText(getApplicationContext(),
-								"Insert Error Please Reset all settings",
+								"Alert Message field cannot be empty",
 								Toast.LENGTH_SHORT).show();
 						return;
+						
 					}
+
 				}
 
 				else {
