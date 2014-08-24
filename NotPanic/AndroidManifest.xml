@@ -30,6 +30,7 @@
         </activity>
         
         <activity android:name="com.meshakti.notpanic.PanicAction" />
+        <activity android:name="com.meshakti.notpanic.Instruction" />
 
         <service
             android:name="com.meshakti.notpanic.AlertConfirm"

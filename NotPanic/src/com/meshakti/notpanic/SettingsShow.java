@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 public class SettingsShow extends Activity {
 	Spinner addableContacts, contacts;
-	Button saveSettings, activateButon, closeButon;
+	Button saveSettings, activateButon, closeButon,insButton;
 	List<String> addableContactsList, contactsList;
 	HashMap<String, String> contactsNumber;
 	DBHelper dbManager;
@@ -43,6 +43,7 @@ public class SettingsShow extends Activity {
 		saveSettings = (Button) findViewById(R.id.app_settings_save);
 		activateButon = (Button) findViewById(R.id.app_settings_activate);
 		closeButon = (Button) findViewById(R.id.app_settings_close);
+		insButton = (Button) findViewById(R.id.app_instruction);
 		messageBox = (EditText) findViewById(R.id.app_user_message);
 		messageBox.setFocusable(false); // remove placing of cursor in
 										// messageBox
@@ -214,6 +215,16 @@ public class SettingsShow extends Activity {
 
 			}
 		});
+		insButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				startActivity(new Intent(SettingsShow.this, Instruction.class));
+				finish();
+
+			}
+		});
 		closeButon.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -268,11 +279,12 @@ public class SettingsShow extends Activity {
 
 			} while (c.moveToNext());
 
-			ArrayAdapter<String> aclAdapter = new ArrayAdapter<String>(
-					getApplicationContext(), R.layout.spintext,
-					addableContactsList);
-			addableContacts.setAdapter(aclAdapter);
+			
 		}
+		ArrayAdapter<String> aclAdapter = new ArrayAdapter<String>(
+				getApplicationContext(), R.layout.spintext,
+				addableContactsList);
+		addableContacts.setAdapter(aclAdapter);
 
 	}
 
