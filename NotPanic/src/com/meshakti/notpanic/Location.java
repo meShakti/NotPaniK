@@ -21,11 +21,11 @@ public class Location {
 		LocationManager locationManager = (LocationManager) activityContext
 				.getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
-		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+		criteria.setAccuracy(Criteria.ACCURACY_FINE);
 		criteria.setAltitudeRequired(false);
 		criteria.setBearingRequired(false);
 		criteria.setCostAllowed(true);
-		criteria.setPowerRequirement(Criteria.POWER_LOW);
+		criteria.setPowerRequirement(Criteria.POWER_MEDIUM);
 		String provider = locationManager.getBestProvider(criteria, true);
 		android.location.Location location = locationManager
 				.getLastKnownLocation(provider);

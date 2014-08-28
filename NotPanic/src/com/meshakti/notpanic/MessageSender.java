@@ -2,7 +2,9 @@ package com.meshakti.notpanic;
 
 import java.io.IOException;
 import java.util.HashMap;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -76,8 +78,10 @@ public class MessageSender extends AsyncTask<Activity, Void, String> {
 			Log.d("Exception", "Exception.." + e);
 
 		}
+		
+		Intent i=new Intent(a,SettingsShow.class);
+		a.startActivity(i);
 		a.finish();
-
 	}
 
 }

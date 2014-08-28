@@ -210,9 +210,9 @@ public class SettingsShow extends Activity {
 
 			@Override
 			public void onClick(View v) {
-
-				startActivity(new Intent(SettingsShow.this, PanicAction.class));
-
+				Intent i=new Intent(SettingsShow.this, PanicAction.class);
+				startActivity(i);
+				finish();
 			}
 		});
 		insButton.setOnClickListener(new View.OnClickListener() {
