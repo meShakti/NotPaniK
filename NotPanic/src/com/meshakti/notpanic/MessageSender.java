@@ -78,8 +78,8 @@ public class MessageSender extends AsyncTask<Activity, Void, String> {
 			Log.d("Exception", "Exception.." + e);
 
 		}
-		
-		Intent i=new Intent(a,SettingsShow.class);
+
+		Intent i = new Intent(a, SettingsShow.class);
 		a.startActivity(i);
 		a.finish();
 	}

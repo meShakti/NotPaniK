@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 public class SettingsShow extends Activity {
 	Spinner addableContacts, contacts;
-	Button saveSettings, activateButon, closeButon,insButton;
+	Button saveSettings, activateButon, closeButon, insButton;
 	List<String> addableContactsList, contactsList;
 	HashMap<String, String> contactsNumber;
 	DBHelper dbManager;
@@ -185,13 +185,12 @@ public class SettingsShow extends Activity {
 									Toast.LENGTH_SHORT).show();
 							return;
 						}
-					}
-					else{
+					} else {
 						Toast.makeText(getApplicationContext(),
 								"Alert Message field cannot be empty",
 								Toast.LENGTH_SHORT).show();
 						return;
-						
+
 					}
 
 				}
@@ -210,7 +209,7 @@ public class SettingsShow extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent i=new Intent(SettingsShow.this, PanicAction.class);
+				Intent i = new Intent(SettingsShow.this, PanicAction.class);
 				startActivity(i);
 				finish();
 			}
@@ -279,11 +278,9 @@ public class SettingsShow extends Activity {
 
 			} while (c.moveToNext());
 
-			
 		}
 		ArrayAdapter<String> aclAdapter = new ArrayAdapter<String>(
-				getApplicationContext(), R.layout.spintext,
-				addableContactsList);
+				getApplicationContext(), R.layout.spintext, addableContactsList);
 		addableContacts.setAdapter(aclAdapter);
 
 	}
