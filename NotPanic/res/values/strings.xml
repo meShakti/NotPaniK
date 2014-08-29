@@ -16,6 +16,6 @@
    <string name="instruction_intro">Do the following in order to use app in emergency</string>
    <string name="instruction_1">1.Hold the volume down button until mobile goes in vibrate mode.</string>
    <string name="instruction_2">2.Then immediately (within 1 second) volume up till mobile is in Ringer mode again.</string>
-   <string name="instruction_3">3.Location details alongwith the message you saved earlier will be sent to all your saved conatacts</string>
+   <string name="instruction_3">3.Location details along with the message you saved earlier will be sent to all your saved contacts</string>
 
 </resources>
