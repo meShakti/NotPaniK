@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 
+//confirms that alert meant for NotPanic only
 public class AlertConfirm extends IntentService {
 
 	public AlertConfirm() {
