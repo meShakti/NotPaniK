@@ -9,6 +9,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -58,17 +59,21 @@ public class SettingsShow extends Activity {
 
 		try {
 			Cursor c = dbManager.getData("Select id,name from Contacts");
-
+			
 			while (c.moveToNext()) {
 				contactsList.add(c.getString(1));
 			}
+			
+			
 		} catch (Exception e) {
 			Toast.makeText(getApplicationContext(), "Application Started",
 					Toast.LENGTH_SHORT).show();
 		}
+	
 		ArrayAdapter<String> cAdapter = new ArrayAdapter<String>(
 				getApplicationContext(), R.layout.spintext, contactsList);
 		contacts.setAdapter(cAdapter);
+		
 		getContactList();
 
 		addableContacts
@@ -252,6 +257,7 @@ public class SettingsShow extends Activity {
 		Cursor c = resolver.query(contacts, null,
 				android.provider.ContactsContract.Contacts.HAS_PHONE_NUMBER,
 				null, android.provider.ContactsContract.Contacts.DISPLAY_NAME);
+	
 		if (c != null && c.moveToFirst()) {
 			int phoneNameIndex = c
 					.getColumnIndex(android.provider.ContactsContract.Contacts.DISPLAY_NAME);
@@ -271,10 +277,17 @@ public class SettingsShow extends Activity {
 
 				// This code will only pick the first phone number
 				phCur.moveToNext();
-				String phoneNo = phCur
-						.getString(phCur
+				
+				try{
+					String phoneNo = phCur
+									.getString(phCur
 								.getColumnIndex(android.provider.ContactsContract.CommonDataKinds.Phone.NUMBER));
-				contactsNumber.put(phoneName, phoneNo);
+					 contactsNumber.put(phoneName, phoneNo);
+				}
+				catch(CursorIndexOutOfBoundsException e){
+					
+				}
+					
 
 			} while (c.moveToNext());
 

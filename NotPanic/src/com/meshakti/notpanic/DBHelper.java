@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	private static final String ALERT_TABLE_QUERY = "CREATE TABLE if not exists "
 			+ ALERT_MESSAGE_TABLE + " (message varchar)";
 	private static final String DEFAULT_MESSAGE = "I am in danger ! Please help";
-	private static final int DB_VERSION = 8;
+	private static final int DB_VERSION = 9;
 
 	public DBHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -79,10 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		ContentValues values = new ContentValues();
 		Cursor c = getData("select message from " + ALERT_MESSAGE_TABLE);
 		c.moveToNext();
-		try {
-			return c.getString(0);
-		} catch (Exception e) {
-
+		if(c.getString(0)==null){
 			values.put("message", DEFAULT_MESSAGE);
 			long ll = db.insert(ALERT_MESSAGE_TABLE, null, values);
 			if (ll > 0) {
@@ -90,7 +87,12 @@ public class DBHelper extends SQLiteOpenHelper {
 			} else {
 				return null;
 			}
+
 		}
+		else {
+			return c.getString(0);
+		}
+
 
 	}
 
